@@ -1,3 +1,4 @@
+import { IResposta } from './../models/IResposta.model';
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from '../services/weather.service';
 
@@ -8,6 +9,8 @@ import { WeatherService } from '../services/weather.service';
 })
 export class Tab1Page implements OnInit {
 
+  previsao: IResposta;
+
   constructor(public weatherService: WeatherService) { }
 
   ngOnInit(): void {
@@ -16,7 +19,8 @@ export class Tab1Page implements OnInit {
 
   buscarPrevisao() {
     this.weatherService.buscarPrevisao().subscribe(retornoPrevisao => {
-      console.log(retornoPrevisao);
+      this.previsao = retornoPrevisao;
+      console.log(retornoPrevisao.results.city);
     });
   }
 

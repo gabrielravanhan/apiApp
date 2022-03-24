@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { IResposta } from '../models/IResposta.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +12,7 @@ export class WeatherService {
 
   constructor(private http: HttpClient) { }
 
-  buscarPrevisao() {
-    return this.http.get(this.url);
+  buscarPrevisao(): Observable<IResposta> {
+    return this.http.get<IResposta>(this.url);
   }
 }
