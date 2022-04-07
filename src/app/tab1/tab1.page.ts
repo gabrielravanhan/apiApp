@@ -24,4 +24,7 @@ export class Tab1Page implements OnInit {
     });
   }
 
+  buscarIcone(slug: string) {
+    return this.weatherService.buscarIcone(slug);
+  }
 }

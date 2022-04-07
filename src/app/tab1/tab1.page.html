@@ -12,7 +12,7 @@
       <ion-card-subtitle>Previsão em:</ion-card-subtitle>
       <ion-card-title class="ion-text-start">
         {{ previsao?.results?.city }}
-        <span class="ion-float-end">
+        <span class="ion-float-end negrito">
           {{ previsao?.results?.temp }}°C
         </span>
       </ion-card-title>
@@ -20,57 +20,58 @@
 
     <ion-card-content>
       <ion-item lines="none">
-        <ion-label>
+        <ion-label class="descricao negrito">
           {{ previsao?.results?.description }}
         </ion-label>
-        <ion-icon name="partly-sunny-outline"></ion-icon>
+        <ion-icon [name]="buscarIcone(previsao?.results?.condition_slug)" color="medium"></ion-icon>
       </ion-item>
 
       <ion-item lines="none">
         <ion-label>
-          Umidade: {{ previsao?.results?.humidity }}%
+          <span class="umidade negrito">Umidade:</span> {{ previsao?.results?.humidity }}%
         </ion-label>
-        <ion-icon name="water-outline"></ion-icon>
+        <ion-icon name="water-outline" color="secondary"></ion-icon>
       </ion-item>
 
       <ion-item lines="none">
         <ion-label>
-          Velocidade do Vento: {{ previsao?.results?.wind_speedy }}
+          <span class="vento negrito">Velocidade do Vento:</span> {{ previsao?.results?.wind_speedy }}
         </ion-label>
-        <ion-icon name="speedometer-outline"></ion-icon>
+        <ion-icon name="speedometer-outline" color="tertiary"></ion-icon>
       </ion-item>
 
       <ion-item lines="none">
         <ion-label>
-          Nascer do Sol: {{ previsao?.results?.sunrise }}
+          <span class="nas-sol negrito">Nascer do Sol:</span> {{ previsao?.results?.sunrise }}
         </ion-label>
-        <ion-icon name="sunny-outline"></ion-icon>
+        <ion-icon name="sunny-outline" color="warning"></ion-icon>
       </ion-item>
 
       <ion-item lines="none">
         <ion-label>
-          Pôr do Sol: {{ previsao?.results?.sunset }}
+          <span class="por-sol negrito">Pôr do Sol</span>: {{ previsao?.results?.sunset }}
         </ion-label>
-        <ion-icon name="moon-outline"></ion-icon>
+        <ion-icon name="moon-outline" color="dark"></ion-icon>
       </ion-item>
-
-
     </ion-card-content>
   </ion-card>
 
   <ion-card>
-    <ion-list lines="full">
+    <ion-list lines="full" class="dias">
       <ion-item-divider>
-        <ion-label>
+        <ion-label class="negrito">
           Próximos Dias:
         </ion-label>
       </ion-item-divider>
 
       <ion-item *ngFor="let dia of previsao?.results?.forecast" lines="full">
-        <ion-label slot="start">{{ dia.date }} - {{ dia.weekday }}</ion-label>
-        <ion-label>Min: {{ dia.min }}°C <br> Max: {{ dia.max }}°C</ion-label>
+        <ion-label slot="start" class="negrito">{{ dia.date }} - {{ dia.weekday }}</ion-label>
+        <ion-label>
+          <span class="minimo negrito">Min:</span> {{ dia.min }}°C <br>
+          <span class="maximo negrito">Max:</span> {{ dia.max }}°C
+        </ion-label>
         <ion-label slot="end">
-          <ion-icon name="thermometer-outline"></ion-icon>
+          <ion-icon name="thermometer-outline" color="danger"></ion-icon>
         </ion-label>
       </ion-item>
     </ion-list>
